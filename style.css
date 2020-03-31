@@ -2,7 +2,6 @@
 /* CSS Document */
 
 body {
-	background-color:#093;
 	background-image:url(fond.jpg);
 	background-size:cover;
 }
@@ -16,18 +15,44 @@ body {
 	background-size:contain;
 	background-repeat: no-repeat;
 	background-color:transparent;
+	margin-top: 40px;
 }
 
 .carte:active {
 	height:90%;
-	width: 50%;
+	width: 80%;
 	position : absolute;
-	left: 10 px;
-	top : 10 px;
+	left: 0;
+	top : 0;
 	z-index: 2;
 	}
 	
 
-button {
 
+
+.first{
+position : absolute;
+left:0px;
+
+}
+
+.second{
+position : absolute;
+left : 80px;
+}
+
+.third{
+position : absolute;
+left : 120px;
+}
+
+
+h1{
+	position : fixed;
+	left: 50vw;
+    transform: translateY(-50%) translateX(-50%);
+	color:#FF9;
+	font-size:40px;
+	font-family: "CFFarWest Regular";
+	font:"CFFarWest Regular";
 }
