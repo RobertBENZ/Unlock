@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color:#093;
+	background-image:url(fond.jpg);
+	background-size:cover;
+}
+
+.carte{
+	height:300px;
+	width : 200px;
+	margin:10px;
+	position: relative ;
+	display: inline-block;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-color:transparent;
+}
+
+.carte:active {
+	height:90%;
+	width: 50%;
+	position : absolute;
+	left: 10 px;
+	top : 10 px;
+	z-index: 2;
+	}
+	
+
+button {
+
+}

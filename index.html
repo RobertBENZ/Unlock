@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Document sans nom</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<input type="text" id="number" name="number">
+
+<button onclick="addCard(number.value)">get</button>
+<button onclick="delCard(number.value)">delete</button>
+
+<script>
+
+var cardList = [1,2,3,4,5,7,8,9];
+var cardListTest = [0,11,16,21,25,35,42,46,48,69];
+
+
+
+function addCard(number) {
+	
+	for (i=0;i<cardListTest.length;i++){
+	if (number == cardListTest[i]){
+		
+  var card = document.createElement("DIV");
+  card.classList.add("carte");
+  //card.innerText = number; 
+  card.id = number ;
+  var url = 'carte/' + number + '.jpg';
+  card.style.backgroundImage ="url('carteTest/"+number+".jpg')"
+  document.body.appendChild(card);
+  
+	}
+	}
+}
+
+function delCard(number) {  
+  var card = document.getElementById(number);
+card.parentNode.removeChild(card);
+  
+}
+</script>
+
+
+<div><object data="../Site Unlock/file.txt"></object></div>
+
+</body>
+</html>
