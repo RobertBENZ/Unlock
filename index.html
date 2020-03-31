@@ -6,18 +6,20 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onKeyPress = "if (event.keyCode == 13) addCard(number.value)">
 
 <h1 id="titre"> TROMBLESTONE EXPRESS </h1>
 
 
 
 
-<input class="first" type="text" id="number" name="number" size="5">
+<input class="first"  type="text" id="number" name="number" size="5">
 
 <button class="second" onclick="addCard(number.value)">get</button>
 <button class="third" onclick="delCard(number.value)">delete</button>
 <button class="fourth" onclick="changeGame()">Change Game</button>
+
+
 
 <script>
 
@@ -31,6 +33,7 @@ var game = "Trombstone Express";
 
 addCard(0.1);
 addCard(0.2);
+
 
 
 function addCard(number) {
@@ -47,6 +50,7 @@ function addCard(number) {
   
 	}
 	}
+	document.getElementById('number').value = ''
 }
 
 function delCard(number) {  

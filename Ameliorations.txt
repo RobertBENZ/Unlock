@@ -1,0 +1,3 @@
+grande touches get delete + case plus grande
+Entrer pour ajouter carte 
+selectionner + supr carte
