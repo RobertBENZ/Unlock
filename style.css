@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-	background-image:url(fond.jpg);
+	background-image:url(fond1.jpg);
 	background-size:cover;
 }
 
@@ -47,6 +47,13 @@ position : absolute;
 left : 120px;
 }
 
+.fourth{
+	position : absolute;
+	left : 180px;
+	left : 95%;
+	
+}
+
 
 h1{
 	position : fixed;
@@ -54,6 +61,6 @@ h1{
     transform: translateY(-50%) translateX(-50%);
 	color:#FF9;
 	font-size:40px;
-	font-family: "CFFarWest Regular";
-	font:"CFFarWest Regular";
+	font-style:italic;
+	text-transform:uppercase;
 }

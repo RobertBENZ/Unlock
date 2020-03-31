@@ -8,20 +8,26 @@
 
 <body>
 
-<h1> TROMBLESTONE EXPRESS </h1>
+<h1 id="titre"> TROMBLESTONE EXPRESS </h1>
+
+
+
 
 <input class="first" type="text" id="number" name="number" size="5">
 
 <button class="second" onclick="addCard(number.value)">get</button>
 <button class="third" onclick="delCard(number.value)">delete</button>
-
-
+<button class="fourth" onclick="changeGame()">change</button>
 
 <script>
 
-var cardList = [1,2,3,4,5,7,8,9,10,11,12,16,17,18,21,23,24,25,27,29,30,34,36,37,46,47,49,51,52,53,55,57,58,61,65,66,68,72,77,78,80,84,85,90,93,94,95,97,99,"a","b","c","d","k","l","n","o","q","r","t","u","v","x","y","z"];
-var cardListTest = [0,11,16,21,25,35,42,46,48,69];
+var NosideList = [0,1,2,3,4,5,7,8,9,10,11,12,16,17,18,21,23,24,25,27,29,30,34,36,37,46,47,49,51,52,53,55,57,58,61,65,66,68,72,77,78,80,84,85,90,93,94,95,97,99,"a","b","c","d","k","l","n","o","q","r","t","u","v","x","y","z"];
+var DidacticielList = [0,11,16,21,25,35,42,46,48,69];
 var TrombstoneList = [0.1,0.2,3,4,5,6,7,8,10,11,12,13,14,15,16,18,20,22,24,25,26,28,30,31,32,33,34,37,38,42,43,46,47,49,50,51,52,53,56,72,74,81,82,85,86,88,"a","b","c","f","g","h","j","k","l","p","s","t","x","y","z"];
+var cardList = TrombstoneList;
+var game = "Trombstone Express";
+
+
 
 addCard(0.1);
 addCard(0.2);
@@ -29,14 +35,14 @@ addCard(0.2);
 
 function addCard(number) {
 	
-	for (i=0;i<TrombstoneList.length;i++){	//ici	
-	if (number == TrombstoneList[i]){		//ici
+	for (i=0;i<cardList.length;i++){	//ici	
+	if (number == cardList[i]){		//ici
 		
   var card = document.createElement("DIV");
   card.classList.add("carte");
   //card.innerText = number; 
   card.id = number ;
-  card.style.backgroundImage ="url('trombstoneCarte/"+number+".jpg')"
+  card.style.backgroundImage ="url('"+game+"/"+number+".jpg')"
   document.body.appendChild(card);
   
 	}
@@ -46,8 +52,38 @@ function addCard(number) {
 function delCard(number) {  
   var card = document.getElementById(number);
 card.parentNode.removeChild(card);
-  
 }
+function changeGame(){
+	var body = document.getElementsByTagName('body')[0];
+	
+	if ( cardList == DidacticielList){
+	delCard(0);	
+	cardList = NosideList;
+	game = "Noside Story";	
+	addCard(0);
+	body.style.backgroundImage = 'url(fond2.jpg)';
+	} else if ( cardList == NosideList){
+	delCard(0);	
+	cardList = TrombstoneList;
+	game = "Trombstone Express";
+	addCard(0.1);
+	addCard(0.2);
+	body.style.backgroundImage = 'url(fond1.jpg)';
+	}else if ( cardList == TrombstoneList){
+	delCard(0.1);
+	delCard(0.2);
+	cardList = DidacticielList;
+	game = "Didacticiel";
+	addCard(0);
+	body.style.backgroundImage = 'url(fond0.jpg)';
+	}
+	document.title = game;
+	document.getElementById("titre").innerHTML = game;
+	
+	
+}
+  
+
 </script>
 
 
