@@ -69,38 +69,38 @@ left : 190px;
 
 #change{
 	position : absolute;
-	right : 2%;
+	right : 10px;
 
 	font-size: 12px;
 	
 }
 #time{
 	position : absolute;
-	right : 8%;
+	right : 110px;
 	font-size: 30px;
 	color:#FF9;
 }
 
 #startTimer{
 	position : absolute;
-	right : 13%;
+	right : 200px;
 	font-size: 12px;
 	}
 
 #penality{
 	position : absolute;
-	right : 18%;
+	right : 290px;
 	font-size: 12px;
 	
 }
 #stop{
 	position : absolute;
-	right : 23%;
+	right : 380px;
 	font-size: 12px;	
 }
 #pause{
 	position : absolute;
-	right : 28%;
+	right : 470px;
 	font-size: 12px;
 	
 }
