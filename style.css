@@ -17,9 +17,9 @@ body {
 	background-repeat: no-repeat;
 	background-color:transparent;
 	margin-top: 40px;
-}
+	}
 
-.carte:active {
+.carteActive {
 
 	height:90%;
 	width: 80%;
@@ -33,6 +33,18 @@ button{
 	width: 80px;
 	height: 40px;
 	font-size: 20px;
+	background-color:#d35400;
+	border:none;
+	transition:0.4s;
+	border-radius : 10%;
+	color:#FFC;
+	text-transform:capitalize;
+}
+
+button:hover{
+	background-color:#FC3;
+	border-radius : 45%;
+	
 }
 
 
@@ -55,9 +67,40 @@ position : absolute;
 left : 190px;
 }
 
-.fourth{
+#change{
 	position : absolute;
-	left : 90%;
+	right : 2%;
+
+	font-size: 12px;
+	
+}
+#time{
+	position : absolute;
+	right : 8%;
+	font-size: 30px;
+	color:#FF9;
+}
+
+#startTimer{
+	position : absolute;
+	right : 13%;
+	font-size: 12px;
+	}
+
+#penality{
+	position : absolute;
+	right : 18%;
+	font-size: 12px;
+	
+}
+#stop{
+	position : absolute;
+	right : 23%;
+	font-size: 12px;	
+}
+#pause{
+	position : absolute;
+	right : 28%;
 	font-size: 12px;
 	
 }

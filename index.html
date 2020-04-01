@@ -6,18 +6,25 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body onKeyPress = "if (event.keyCode == 13) addCard(number.value)">
-
-<h1 id="titre"> TROMBLESTONE EXPRESS </h1>
 
 
+<body onKeyDown = "getOrDel()">
+
+<h1 id="titre"> TROMBSTONE EXPRESS </h1>
+ <div id="time">60:00</div>
 
 
-<input class="first"  type="text" id="number" name="number" size="5">
 
-<button class="second" onclick="addCard(number.value)">get</button>
-<button class="third" onclick="delCard(number.value)">delete</button>
-<button class="fourth" onclick="changeGame()">Change Game</button>
+
+<input class="first"  type="text" id="numberInput" name="number" size="5">
+
+<button class="second" onclick="addCard(numberInput.value)">get</button>
+<button class="third" onclick="delCard(numberInput.value)">delete</button>
+<button id="change" onclick="changeGame()">Change Game</button>
+<button id="startTimer" onclick="startTimer(timerDuration)">Start Timer</button>
+<button id="penality" onclick="penality()">-1 min</button>
+<button id="stop" onclick="stopTimer()">stop</button>
+<button id="pause" onclick="pauseTimer()">pause</button>
 
 
 
@@ -28,6 +35,12 @@ var DidacticielList = [0,11,16,21,25,35,42,46,48,69];
 var TrombstoneList = [0.1,0.2,3,4,5,6,7,8,10,11,12,13,14,15,16,18,20,22,24,25,26,28,30,31,32,33,34,37,38,42,43,46,47,49,50,51,52,53,56,72,74,81,82,85,86,88,"a","b","c","f","g","h","j","k","l","p","s","t","x","y","z"];
 var cardList = TrombstoneList;
 var game = "Trombstone Express";
+var globalTimer;
+var intervalId;
+var timerDuration = 60 * 60;
+var timerPaused = 0;
+ 
+ display = document.querySelector('#time');
 
 
 
@@ -46,17 +59,28 @@ function addCard(number) {
   //card.innerText = number; 
   card.id = number ;
   card.style.backgroundImage ="url('"+game+"/"+number+".jpg')"
+  card.onmousedown = function (){activeCard(number)};
   document.body.appendChild(card);
   
 	}
 	}
-	document.getElementById('number').value = ''
+	document.getElementById('numberInput').value = '';
 }
 
 function delCard(number) {  
   var card = document.getElementById(number);
 card.parentNode.removeChild(card);
+document.getElementById('numberInput').value = '';
 }
+
+function activeCard(number){
+	var card = document.getElementById(number);
+	if (card.classList.contains("carteActive")) card.classList.remove("carteActive");
+	else card.classList.add("carteActive");
+	
+	
+}
+
 function changeGame(){
 	var body = document.getElementsByTagName('body')[0];
 	
@@ -83,14 +107,61 @@ function changeGame(){
 	}
 	document.title = game;
 	document.getElementById("titre").innerHTML = game;
-	
-	
 }
+
+function getOrDel(){
+if (event.keyCode == 13) addCard(numberInput.value);
+if (event.keyCode == 8) delCard(numberInput.value);
+//alert(event.which);
+
+}
+
   
+function startTimer(duration) {
+    var timer = duration, minutes, seconds;
+	clearInterval(intervalId);
+    intervalId = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+		globalTimer = timer;
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+function penality(){
+	clearInterval(intervalId);
+	globalTimer -= 61;
+	startTimer(globalTimer,display);
+}
+
+function stopTimer(){
+	clearInterval(intervalId);
+	display.textContent = "60:00";
+}
+
+function pauseTimer(){
+	if(timerPaused == 0){
+	clearInterval(intervalId);
+	timerPaused = 1;
+	document.getElementById("pause").innerHTML = "play";	
+	} else {
+		timerPaused = 0;
+		document.getElementById("pause").innerHTML = "pause";
+		startTimer(globalTimer,display);	
+		
+	}
+}
+
+
 
 </script>
-
-
 
 
 </body>
